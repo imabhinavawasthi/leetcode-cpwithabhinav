@@ -30,19 +30,13 @@ int MaxGold(vector<vector<int>>&matrix){
                 matrix[i][j]+=lastmx;
         }
     }
-    // for(int i=0;i<m;i++){
-    //     mx=max(mx,matrix[n-1][i]);
-    // }
-    
     for(int i=0;i<n;i++){
         int rowmx=-1;
         for(int j=0;j<m;j++){
             rowmx=max(rowmx,matrix[i][j]);
-            // cout<<matrix[i][j]<<" ";
         }
         if(rowmx==-1)return mx;
         else mx=max(mx,rowmx);
-        // cout<<"\n";
     }
     return mx;
 }
