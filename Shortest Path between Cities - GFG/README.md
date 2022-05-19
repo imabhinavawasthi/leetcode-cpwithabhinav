@@ -1,5 +1,5 @@
 # Shortest Path between Cities
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Geek lives in a special city where houses are arranged in a hierarchial manner. Starting from house number 1, each house leads to two more houses. &nbsp;<br>
 1 leads to 2 and 3.&nbsp;<br>
