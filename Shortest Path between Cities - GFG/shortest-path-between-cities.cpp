@@ -10,16 +10,16 @@ using namespace std;
 class Solution{   
 public:
     int shortestPath( int x, int y){ 
-        // code here 
-        int a=log2(x);
-        int b=log2(y);
-        while(x!=y){
-            if(x>y)x/=2;
-            else y/=2;
-        }
-        int c=log2(x);
-        int ans=a+b-2*c;
-        return ans;
+    	int count = 0;
+    	while(x != y)
+		{
+			if(x > y)
+				x = x/2;
+			else
+				y = y/2;
+			count++;
+		}
+		return count;
     }
 };
 
