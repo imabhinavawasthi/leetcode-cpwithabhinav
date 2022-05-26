@@ -9,25 +9,36 @@ using namespace std;
 
 class Solution{
 public:
-    int rec(int n, vector<int> adj[], int len[]){
-        if(len[n])
-            return len[n];
-        len[n] = 0;
-        for(int u: adj[n])
-            len[n] = max(len[n], rec(u, adj, len));
-        len[n] += 1;
-        return len[n];
+    int d[100006];
+    int f(int i,vector<int>a[],vector<int>&vis)
+    {
+        if(vis[i])return d[i];
+        vis[i]=1;int c=0;
+        for(auto child:a[i])
+        {
+            if(vis[child])
+            c=max(c,1+d[child]);
+            else
+           c=max(c,1+f(child,a,vis));
+        }
+        d[i]=c;
+        return d[i];
     }
-    
     int minColour(int N, int M, vector<int> mat[]) {
-        vector<int> adj[N+1];
-        int len[N+1] = {0};
-        int maxVal = -1;
-        for(int i = 0;i < M;i++)
-            adj[mat[i][0]].push_back(mat[i][1]);
-        for(int i = 1;i <= N;i++)
-            maxVal = max(maxVal, rec(i, adj, len));
-        return maxVal;
+        // code here
+        vector<int>a[N+1];
+        vector<int>vis(N+1,0);
+        for(int i=0;i<M;i++){
+            int x,y;
+            x=mat[i][0];
+            y=mat[i][1];
+            a[x].push_back(y);
+        }
+        int ans=0;
+        for(int i=1;i<=N;i++){
+            ans=max(ans,f(i,a,vis));
+        }
+        return ans+1;
     }
 };
 
