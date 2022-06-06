@@ -7,9 +7,13 @@ public:
         while(i<j)
         {
             //temp
-            char temp=s[i];
-            s[i]=s[j];
-            s[j]=temp;
+            // char temp=s[i];
+            // s[i]=s[j];
+            // s[j]=temp;
+            // i++;
+            // j--;
+            //inbuild
+            swap(s[i],s[j]);
             i++;
             j--;
         }
