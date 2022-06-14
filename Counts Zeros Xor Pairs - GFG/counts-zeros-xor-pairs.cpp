@@ -34,15 +34,15 @@ int main()
 long long int calculate(int a[], int n)
 {
     // Complete the function
-    map<int,int>m;
+    map<int,int>mp;
     for(int i=0;i<n;i++){
-        m[a[i]]++;
+        mp[a[i]]++;
     }
     long long int ans=0;
-    for(auto &it:m){
-        int x=it.second;
-        int y=(x*(x-1))/2;
-        ans+=y;
+    for(auto &it:mp){
+        int key=it.first;
+        int value=it.second;
+        ans+=((value)*(value-1)/2);
     }
     return ans;
 }
