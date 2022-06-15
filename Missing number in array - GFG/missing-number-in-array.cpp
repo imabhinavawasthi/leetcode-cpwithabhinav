@@ -13,11 +13,10 @@ using namespace std;
 class Solution{
   public:
     int MissingNumber(vector<int>& array, int n) {
-        int a=1;
-        int b=array[0];
-        for(int i=2;i<=n;i++)a=a^i;
-        for(int i=1;i<n-1;i++)b=b^array[i];
-        return a^b;
+        int x=1;
+        for(int i=2;i<=n;i++)x=x^i;
+        for(int i=0;i<n-1;i++)x=x^array[i];
+        return x;
     }
 };
 
