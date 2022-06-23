@@ -18,7 +18,9 @@ class Solution
      
                 if (wt[i - 1] <= w)
                     // finding the maximum value
-                    dp[w] = max(dp[w] , dp[w - wt[i - 1]] + val[i - 1]);
+                    {int take= (dp[w - wt[i - 1]] + val[i - 1]);
+                    int nottake=dp[w];
+                    dp[w] = max(take,nottake);}
             }
         }
         return dp[W]; // returning the maximum value of knapsack
