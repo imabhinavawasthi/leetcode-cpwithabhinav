@@ -10,18 +10,25 @@ using namespace std;
 
 class Solution{
   public:
-    int cutRod(int val[], int n) {
-        int W=n;
-        int dp[W+1];
-        memset(dp, 0, sizeof dp);
+    int f(int price[],int index,int n,vector<vector<int>>&dp){
+        //base
+        if(index==0){
+            return n*price[0];
+        }
+        if(dp[index][n]!=-1)return dp[index][n];
         
-        // Fill dp[] using above recursive formula
-        for (int i=0; i<=W; i++)
-          for (int j=0; j<n; j++)
-             if ((j+1) <= i)
-                dp[i] = max(dp[i], dp[i-j-1] + val[j]);
-     
-        return dp[W];
+        int nottake=f(price,index-1,n,dp);
+        int take=INT_MIN;
+        int l=index+1;
+        if(l<=n){
+            take=price[index]+f(price,index,n-l,dp);
+        }
+        return dp[index][n]=max(take,nottake);
+        
+    }
+    int cutRod(int price[], int n) {
+        vector<vector<int>>dp(n,vector<int>(n+1,-1));
+        return f(price,n-1,n,dp);
     }
 };
 
