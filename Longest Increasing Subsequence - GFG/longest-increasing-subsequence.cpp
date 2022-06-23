@@ -8,27 +8,24 @@ using namespace std;
 class Solution
 {
     public:
-    
+    //Function to find length of longest increasing subsequence.
     int longestSubsequence(int n, int a[])
     {
-        vector<int>dp(n);
+        int dp[n+1];
+        for(int i=0;i<=n;i++)dp[i]=INT_MAX;
+        dp[0]=INT_MIN;
         for(int i=0;i<n;i++){
-            dp[i]=1;
-            int mn=0;
-            for(int j=0;j<i;j++){
-                if(a[j]<a[i]){
-                    mn=max(mn,dp[j]);
-                }
+            int index=upper_bound(dp,dp+n+1,a[i])-dp;
+            if(a[i]>dp[index-1]&&a[i]<dp[index]){
+                dp[index]=a[i];
             }
-            dp[i]+=mn;
         }
-        int mn=1;
-        for(int i=0;i<n;i++){
-            mn=max(mn,dp[i]);
+        for(int i=n;i>=0;i--){
+            if(dp[i]!=INT_MAX){
+                return i;
+            }
         }
-        return mn;
     }
- 
 };
 
 // { Driver Code Starts.
