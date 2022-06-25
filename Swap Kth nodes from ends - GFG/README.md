@@ -1,5 +1,5 @@
 # Swap Kth nodes from ends
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a singly linked list of size N, and an integer K.&nbsp;You need to swap the K<sup>th</sup>&nbsp;node from the beginning and K<sup>th</sup> node from the end of the linked list. Swap the nodes through the links. Do&nbsp;not change&nbsp;the content of the nodes.</span></p>
 
