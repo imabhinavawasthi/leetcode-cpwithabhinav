@@ -86,35 +86,35 @@ Node *swapkthnode(Node* head, int n, int k)
 {
     // Your Code here
     if(k>n)return head;
-    Node* x = head;
-    Node* x_prev = NULL;
-    for (int i = 1; i < k; i++) {
-        x_prev = x;
-        x = x->next;
+    Node* x=head;
+    Node* x_prev=NULL;
+    
+    for(int i=0;i<k-1;i++){
+        x_prev=x;
+        x=x->next;
     }
     
-    Node* y = head;
-    Node* y_prev = NULL;
-    for (int i = 1; i < n - k + 1; i++) {
-        y_prev = y;
-        y = y->next;
+    Node* y=head;
+    Node* y_prev=NULL;
+    
+    for(int i=0;i<n-k;i++){
+        y_prev=y;
+        y=y->next;
     }
     
-    // broken when we change y->next.
-    if (x_prev)
-        x_prev->next = y;
-    // Same thing applies to y_prev
-    if (y_prev)
-        y_prev->next = x;
-        
-    Node* temp = x->next;
-    x->next = y->next;
-    y->next = temp;
-    // Change head pointers when k is 1 or n
-    if (k == 1)
-        head = y;
-    if (k == n)
-        head = x;
-        
+    if(x_prev){
+        x_prev->next=y;
+    }
+    if(y_prev){
+        y_prev->next=x;
+    }
+    
+    Node* temp=x->next;
+    x->next=y->next;
+    y->next=temp;
+    
+    if(k==1)head=y;
+    if(k==n)head=x;
+    
     return head;
 }
