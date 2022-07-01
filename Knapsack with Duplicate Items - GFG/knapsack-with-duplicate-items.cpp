@@ -33,7 +33,7 @@ public:
             dp[i][W] = max(val[i]
                           + knapSackRec(W - wt[i],
                                        wt, val,
-                                       i , dp),
+                                       i , dp),  
                            knapSackRec(W, wt, val,
                                        i - 1, dp));
      
